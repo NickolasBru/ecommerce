@@ -51,6 +51,15 @@ This repository contains a simplified e-commerce application built with Laravel 
    ```bash
     php artisan key:generate
    ```
+6. **Run the migrations** inside the container:
+   ```bash
+    php artisan migrate
+   ```
+
+7. **Seed the data for countries and categories** inside the container:
+   ```bash
+    php artisan db:seed
+   ```
 
 The application should now be running on the port you configured in `docker-compose.yml` (commonly `http://localhost:8080`).
 
@@ -137,6 +146,90 @@ database/
     - The `ProductService` uses `ProductRepository.delete($id)` to remove the product from the database.
 6. **Validation**:
     - The `ProductRequest` ensures fields like `name`, `sku`, `price`, and `category_id` are valid for both creation and updates.
+
+---
+
+## Example API Requests
+
+### Create Product
+**Request:**
+```bash
+POST /api/products
+```
+**Payload:**
+```json
+{
+  "name": "New Product Example",
+  "description": "This is another sample product for testing.",
+  "cover_img_url": "https://example.com/new-product-example.jpg",
+  "sku": "SP-987654",
+  "price": 29.99,
+  "stock_quantity": 50,
+  "is_active": true,
+  "category_id": 2,
+  "personsupplier_id": 2
+}
+```
+
+**Response:**
+```json
+{
+  "data": {
+    "product_id": 1,
+    "name": "New Product Example",
+    "description": "This is another sample product for testing.",
+    "coverImageUrl": "https://example.com/new-product-example.jpg",
+    "sku": "SP-987654",
+    "price": "29.99",
+    "stockQuantity": 50,
+    "isActive": 1,
+    "categoryId": 2,
+    "productSupplier": [
+      {
+        "personSupplier": {
+          "person_id": 2,
+          "company_name": "Global Traders Ltd.",
+          "vat_number": "Nlq5YR33HJ",
+          "products_count": 50
+        }
+      }
+    ]
+  }
+}
+```
+
+### Get Product by ID
+**Request:**
+```bash
+GET /api/products/1
+```
+
+**Response:**
+```json
+{
+  "data": {
+    "product_id": 1,
+    "name": "New Product Example",
+    "description": "This is another sample product for testing.",
+    "coverImageUrl": "https://example.com/new-product-example.jpg",
+    "sku": "SP-987654",
+    "price": "29.99",
+    "stockQuantity": 50,
+    "isActive": 1,
+    "categoryId": 2,
+    "productSupplier": [
+      {
+        "personSupplier": {
+          "person_id": 2,
+          "company_name": "Global Traders Ltd.",
+          "vat_number": "Nlq5YR33HJ",
+          "products_count": 50
+        }
+      }
+    ]
+  }
+}
+```
 
 ---
 
