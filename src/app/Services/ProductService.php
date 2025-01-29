@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Products;
 use App\Models\ProductSupplier;
 use App\Interfaces\ProductRepositoryInterface;
 use App\Interfaces\ProductSupplierRepositoryInterface;
@@ -17,9 +18,18 @@ class ProductService
         $this->productSupplierRepository = $productSupplierRepository;
     }
 
-    public function getAllProducts(array $relations = [])
+    public function getAllProducts(array $relations = [], ?int $supplierId = null)
     {
-        return $this->productRepository->all($relations);
+        $query = Products::with($relations);
+
+        // ✅ Filter by supplier ID if provided
+        if ($supplierId) {
+            $query->whereHas('ProductSupplier', function ($q) use ($supplierId) {
+                $q->where('personsupplier_id', $supplierId);
+            });
+        }
+
+        return $query->get();
     }
 
     public function getProductById(int $id, array $relations = [])

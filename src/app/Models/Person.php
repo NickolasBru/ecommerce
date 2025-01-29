@@ -55,5 +55,15 @@ class Person extends Model
         return $this->hasOne(PersonSupplier::class, 'person_id', 'person_id');
     }
 
+    /**
+     * A person belongs to a user.
+     *
+     * @return HasOne
+     */
+    public function personCustomer(): HasOne
+    {
+        return $this->hasOne(PersonCustomer::class, 'person_id', 'person_id');
+    }
+
 }
 

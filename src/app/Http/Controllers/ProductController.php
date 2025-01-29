@@ -30,7 +30,12 @@ class ProductController extends Controller
      */
     public function index(Request $request): ProductsCollection
     {
-        return new ProductsCollection($this->service->getAllProducts(['category', 'productSupplier.personSupplier.Person']));
+        $supplierId = $request->query('supplier_id');
+
+        return new ProductsCollection($this->service->getAllProducts(
+            ['category', 'productSupplier.personSupplier.Person'],
+            $supplierId
+        ));
     }
 
     /**
