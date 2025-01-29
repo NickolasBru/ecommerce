@@ -71,6 +71,16 @@ The provided backend implementation showcases the thought process and design pat
    ```bash
     php artisan db:seed
    ```
+8. **Publish sanctum** inside the container:
+   ```bash
+    php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+   ```
+9. **Run the sanctum migration** inside the container:
+    ```bash
+    php artisan migrate
+    ```
+
+
 
 The application should now be running on the port you configured in `docker-compose.yml` (commonly `http://localhost:8080`).
 
