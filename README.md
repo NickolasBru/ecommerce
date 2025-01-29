@@ -13,7 +13,7 @@ This repository contains a simplified e-commerce application built with Laravel 
 
 ---
 
-## Disclosure
+## Disclaimer
 During the implementation of this project, certain parts of the test were omitted due to time constraints and external factors. Specifically, the frontend implementation, Login logic and the Orders CRUD were omitted. Instead, the focus was on:
 
 - Comprehensive database modeling.
