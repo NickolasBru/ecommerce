@@ -14,10 +14,11 @@ This repository contains a simplified e-commerce application built with Laravel 
 ---
 
 ## Disclaimer
-During the implementation of this project, certain parts of the test were omitted due to time constraints and external factors. Specifically, the frontend implementation, Login logic and the Orders CRUD were omitted. Instead, the focus was on:
+During the implementation of this project, certain parts of the test were omitted due to time constraints and external factors. Specifically, the Orders CRUD were omitted. Instead, the focus was on:
 
 - Comprehensive database modeling.
 - Implementing a complete backend CRUD for products.
+- Basic login/token logic for the frontend.
 
 The provided backend implementation showcases the thought process and design patterns used to create a scalable system. As needed, future improvements and omitted sections can be discussed in detail.
 
@@ -245,10 +246,8 @@ GET /api/products/1
 
 ## Notes and Future Improvements
 - **Order Flow**: Next steps might include creating an `orders` table to finalize a purchase.
-- **Authorization/Authentication**: Implement user authentication to ensure only the correct user can modify their cart.
 - **Multiple Products**: For bulk insertion of items, pass an array of `product_id` and `quantity` pairs.
 - **Testing**: Consider adding Feature/Unit tests for each endpoint.
-- **Frontend**: Implement react for the frontend.
 
 ---
 
